@@ -87,7 +87,6 @@ text
 You can now confidently add the SQL project to your CV. Here is the updated, polished text for your CV:
 
 **SQL Sales Data Analysis** | *SQL (SQLite), Data Aggregation, Data Cleaning*
-*GitHub Repository: github.com/BeastMODWH/SQL-Sales-Analysis-Project*
 *   Analyzed a dataset of 9,800 retail sales records using SQL to answer key business questions and extract actionable insights.
 *   Cleaned raw data by renaming unformatted columns and removing redundant header rows to ensure mathematical accuracy.
 *   Utilized `GROUP BY` and `SUM()` to identify the West region as the top revenue driver ($710k+), and employed `HAVING` clauses to filter aggregated data.
