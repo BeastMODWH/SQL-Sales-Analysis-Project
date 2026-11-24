@@ -96,8 +96,8 @@ Business Value: If the company wants to increase revenue, they should focus thei
 
 ## Key Learnings
 
-Mastered the difference between WHERE (filtering rows) and HAVING (filtering aggregated groups).
-Learned how to clean raw text data using ALTER TABLE and DELETE commands.
-Gained experience using GROUP BY and ORDER BY to summarize thousands of rows into clear, actionable business metrics.
-Developed techniques to handle dirty data (invalid dates) using CASE statements to prevent data loss.
-Learned how to aggregate distinct counts (COUNT(DISTINCT)) to avoid double-counting orders.
+*   Mastered the difference between `WHERE` (filtering rows) and `HAVING` (filtering aggregated groups).
+*   Learned how to clean raw text data using `ALTER TABLE` and `DELETE` commands.
+*   Gained experience using `GROUP BY` and `ORDER BY` to summarize thousands of rows into clear, actionable business metrics.
+*   Developed techniques to handle dirty data (invalid dates) using `CASE` statements to prevent data loss.
+*   Learned how to aggregate distinct counts (`COUNT(DISTINCT)`) to avoid double-counting orders.
