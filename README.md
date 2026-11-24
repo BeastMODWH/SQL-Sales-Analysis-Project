@@ -74,7 +74,7 @@ Result: While grouping revenue by month, I encountered a NULL value that represe
 
 ## Part 2: Customer Segmentation Analysis
 
-Business Question
+## Business Question
 
 Which customer segment (Consumer, Corporate, Home Office) generates the highest total revenue and places the most unique orders?
 ```
@@ -86,7 +86,7 @@ FROM train
 GROUP BY Segment
 ORDER BY Total_Revenue DESC;
 ```
-Result & Insight
+## Result & Insight
 
 The data clearly shows that the Consumer segment is the primary revenue driver, generating $1,148,060.53 across 2,537 unique orders.
 
@@ -94,7 +94,7 @@ The Corporate segment generated $688,494.07 (1,491 orders).
 The Home Office segment generated $424,982.18 (894 orders).
 Business Value: If the company wants to increase revenue, they should focus their marketing budget and retention campaigns heavily on the Consumer segment, as they account for more than 50% of total revenue.
 
-Key Learnings
+## Key Learnings
 
 Mastered the difference between WHERE (filtering rows) and HAVING (filtering aggregated groups).
 Learned how to clean raw text data using ALTER TABLE and DELETE commands.
