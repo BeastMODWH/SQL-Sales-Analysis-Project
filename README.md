@@ -52,7 +52,7 @@ Gained experience using GROUP BY and ORDER BY to summarize thousands of rows int
 
 ### 4. Time Series Analysis & Handling Dirty Data
 **Query:**
-```sql
+sql
 SELECT 
     CASE 
         WHEN strftime('%m', SUBSTR(Order_Date, 7, 4) || '-' || SUBSTR(Order_Date, 1, 2) || '-' || SUBSTR(Order_Date, 4, 2)) IS NULL 
