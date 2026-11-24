@@ -93,3 +93,11 @@ The data clearly shows that the Consumer segment is the primary revenue driver, 
 The Corporate segment generated $688,494.07 (1,491 orders).
 The Home Office segment generated $424,982.18 (894 orders).
 Business Value: If the company wants to increase revenue, they should focus their marketing budget and retention campaigns heavily on the Consumer segment, as they account for more than 50% of total revenue.
+
+Key Learnings
+
+Mastered the difference between WHERE (filtering rows) and HAVING (filtering aggregated groups).
+Learned how to clean raw text data using ALTER TABLE and DELETE commands.
+Gained experience using GROUP BY and ORDER BY to summarize thousands of rows into clear, actionable business metrics.
+Developed techniques to handle dirty data (invalid dates) using CASE statements to prevent data loss.
+Learned how to aggregate distinct counts (COUNT(DISTINCT)) to avoid double-counting orders.
