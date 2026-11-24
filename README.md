@@ -1,5 +1,4 @@
 # SQL-Sales-Analysis-Project
-# SQL Sales Data Analysis
 
 ## Project Overview
 This project demonstrates the use of SQL to query and analyze a dataset of 9,800 retail sales records (Superstore Dataset). The goal was to extract actionable business insights regarding revenue generation and regional performance.
