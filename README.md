@@ -101,3 +101,35 @@ Business Value: If the company wants to increase revenue, they should focus thei
 *   Gained experience using `GROUP BY` and `ORDER BY` to summarize thousands of rows into clear, actionable business metrics.
 *   Developed techniques to handle dirty data (invalid dates) using `CASE` statements to prevent data loss.
 *   Learned how to aggregate distinct counts (`COUNT(DISTINCT)`) to avoid double-counting orders.
+
+  ---
+
+## Part 3: Shipping Efficiency Analysis
+
+### Business Question
+What is the average number of days it takes to ship an order for each `Ship_Mode` (Standard Class, First Class, etc.)?
+
+### Query
+```sql
+SELECT 
+    Ship_Mode,
+    ROUND(AVG(
+        julianday(SUBSTR(Ship_Date, 7, 4) || '-' || SUBSTR(Ship_Date, 1, 2) || '-' || SUBSTR(Ship_Date, 4, 2)) - 
+        julianday(SUBSTR(Order_Date, 7, 4) || '-' || SUBSTR(Order_Date, 1, 2) || '-' || SUBSTR(Order_Date, 4, 2))
+    ), 2) AS Avg_Days_To_Ship
+FROM train
+WHERE Ship_Date IS NOT NULL AND Order_Date IS NOT NULL
+GROUP BY Ship_Mode
+ORDER BY Avg_Days_To_Ship DESC;
+```
+### Result & Insight
+
+* Same Day shipping is the fastest at 1.96 days.
+* First Class takes 62.84 days.
+* Second Class takes 97.00 days.
+* Standard Class takes 145.77 days.
+  
+###Data Quality Anomaly: 
+The average shipping times for Standard and Second Class are unrealistically high (over 90 days). This indicates a data quality issue in the source dataset where dates may have been mixed between US (MM/DD/YYYY) and UK (DD/MM/YYYY) formats, creating extreme outliers. In a production environment, I would use a WHERE clause to filter out shipping times over 30 days and flag these records to the data engineering team.
+
+Business Value: Even with the anomalies, the pattern is clear: Customers paying for Same Day or First Class receive their items significantly faster. The business should investigate the delays in Standard Class to improve customer satisfaction
