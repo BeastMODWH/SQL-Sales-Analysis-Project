@@ -17,7 +17,6 @@ This project demonstrates the use of SQL to query and analyze a dataset of 9,800
 ## Part 1: Revenue, Regional Performance & Data Quality
 
 ### 1. What is the Total Revenue?
-**Query:**
 
 ### Query
 ```sql
