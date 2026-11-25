@@ -19,15 +19,17 @@ This project demonstrates the use of SQL to query and analyze a dataset of 9,800
 ### 1. What is the Total Revenue?
 **Query:**
 
-```
+### Query
+```sql
 SELECT SUM(Sales) AS Total_Revenue 
 FROM train;
 ```
 Result: The company generated $2,261,536.78 in total sales across the dataset.
 
 ### 2. Which Region Generates the Most Revenue?
-```
 
+### Query
+```sql
 SELECT Region, SUM(Sales) AS Total_Revenue
 FROM train
 GROUP BY Region
@@ -36,7 +38,9 @@ ORDER BY Total_Revenue DESC;
 Result: The West region is the top performer with $710,219.68, followed by the East region. The South region is the lowest performer.
 
 ## 3. Which Regions have a High Average Order Value?
-```
+
+### Query
+```sql
 SELECT Region, AVG(Sales) AS Average_Order_Value
 FROM train
 GROUP BY Region
@@ -46,7 +50,9 @@ ORDER BY Average_Order_Value DESC;
 Result: Used the HAVING clause to filter aggregated data. It revealed that the South region, despite having the lowest total revenue, actually has the highest average order value ($243.52). This indicates they sell fewer items, but higher-value items.
 
 ## 4. Top 10 Products by Revenue
-```
+
+### Query
+```sql
 SELECT 
     Product_Name, 
     ROUND(SUM(CAST(Sales AS REAL)), 2) AS Total_Revenue
@@ -58,7 +64,9 @@ LIMIT 10;
 Result: Used the CAST() function to ensure the Sales column was treated as a numeric value before aggregation, then used LIMIT 10 to identify the highest revenue-generating products for inventory prioritization.
 
 ## 5. Time Series Analysis & Handling Dirty Data
- ```  
+
+### Query
+```sql  
 SELECT 
     CASE 
         WHEN strftime('%m', SUBSTR(Order_Date, 7, 4) || '-' || SUBSTR(Order_Date, 1, 2) || '-' || SUBSTR(Order_Date, 4, 2)) IS NULL 
@@ -77,7 +85,9 @@ Result: While grouping revenue by month, I encountered a NULL value that represe
 ## Business Question
 
 Which customer segment (Consumer, Corporate, Home Office) generates the highest total revenue and places the most unique orders?
-```
+
+### Query
+```sql
 SELECT 
     Segment,
     COUNT(DISTINCT Order_ID) AS Total_Orders,
@@ -129,7 +139,7 @@ ORDER BY Avg_Days_To_Ship DESC;
 * Second Class takes 97.00 days.
 * Standard Class takes 145.77 days.
   
-###Data Quality Anomaly: 
+### Data Quality Anomaly: 
 The average shipping times for Standard and Second Class are unrealistically high (over 90 days). This indicates a data quality issue in the source dataset where dates may have been mixed between US (MM/DD/YYYY) and UK (DD/MM/YYYY) formats, creating extreme outliers. In a production environment, I would use a WHERE clause to filter out shipping times over 30 days and flag these records to the data engineering team.
 
 Business Value: Even with the anomalies, the pattern is clear: Customers paying for Same Day or First Class receive their items significantly faster. The business should investigate the delays in Standard Class to improve customer satisfaction
