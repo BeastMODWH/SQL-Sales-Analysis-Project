@@ -132,13 +132,11 @@ GROUP BY Ship_Mode
 ORDER BY Avg_Days_To_Ship DESC;
 ```
 ### Result & Insight
+*   **Same Day** shipping: **1.96 days**
+*   **First Class** shipping: **62.84 days**
+*   **Second Class** shipping: **97.00 days**
+*   **Standard Class** shipping: **145.77 days**
 
-* Same Day shipping is the fastest at 1.96 days.
-* First Class takes 62.84 days.
-* Second Class takes 97.00 days.
-* Standard Class takes 145.77 days.
-  
-### Data Quality Anomaly: 
-The average shipping times for Standard and Second Class are unrealistically high (over 90 days). This indicates a data quality issue in the source dataset where dates may have been mixed between US (MM/DD/YYYY) and UK (DD/MM/YYYY) formats, creating extreme outliers. In a production environment, I would use a WHERE clause to filter out shipping times over 30 days and flag these records to the data engineering team.
+**Data Quality Anomaly:** The average shipping times for Standard and Second Class are unrealistically high (over 90 days). This indicates a severe data quality issue in the source dataset where dates may have been mixed between US (MM/DD/YYYY) and UK (DD/MM/YYYY) formats, creating extreme outliers. 
 
-Business Value: Even with the anomalies, the pattern is clear: Customers paying for Same Day or First Class receive their items significantly faster. The business should investigate the delays in Standard Class to improve customer satisfaction
+**Business Action:** In a production environment, I would immediately flag this anomaly to the Data Engineering team. To handle this in the query, I would add a filter to exclude shipping times that are illogical (e.g., filtering for `BETWEEN 0 AND 10` days) to find the true average for First Class and Same Day, while investigating the Standard Class errors separately.
